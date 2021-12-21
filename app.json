@@ -1,0 +1,12 @@
+{
+  "name": "login_auth",
+  "displayName": "Login Auth",
+  "expo": {
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "splash": {
+      "resizeMode": "contain",
+      "backgroundColor": "#25242E"
+    }
+  }
+}
