@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import React, { useCallback, useContext } from 'react'
 import { useForm, Controller } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { schema } from '@app/screen/SignIn/utils/validate'
@@ -21,10 +21,13 @@ import {
   Register,
   WrapperIconBack
 } from './styles'
+import AuthContext from '@app/contexts/auth'
 
 WrapperIconBack.loadFont()
 
 const SignIn: React.FC = () => {
+  const { signIn } = useContext(AuthContext)
+
   const {
     control,
     handleSubmit,
@@ -37,9 +40,13 @@ const SignIn: React.FC = () => {
     }
   })
 
-  const onSubmit = useCallback((data: IFormSignIn) => {
-    console.log(data)
-  }, [])
+  const onSubmit = useCallback(
+    async (data: IFormSignIn) => {
+      console.log(data)
+      await signIn()
+    },
+    [signIn]
+  )
 
   return (
     <Container>
